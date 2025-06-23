@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
 
 function Home() {
   const [todo, SetTodo] = useState("");
@@ -11,7 +12,6 @@ function Home() {
       SetTodo("");
     }
     console.log(list);
-    
   };
 
   const deleteTask = (Deleteindex) => {
@@ -31,12 +31,17 @@ function Home() {
       >
         <form action="" onSubmit={submit}>
           <input
+          style={{height:"35px",borderRadius:"2px",width:"300px"}}
             type="text"
             value={todo}
-            placeholder="Enter A task"
+            placeholder="Add A task"
             onChange={(e) => SetTodo(e.target.value)}
           />
-          <button type="submit" style={{backgroundColor:"blue",color:"white"}}>Add Task</button>
+          <Button
+            type="submit"
+          >
+            Add Task
+          </Button>
         </form>
       </div>
       {list.map((item, index) => (
@@ -49,14 +54,16 @@ function Home() {
             borderRadius: "12px",
             width: "80%",
             backgroundColor: "Blue",
-            color:"white",
+            color: "white",
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
           }}
         >
           <h1>{item}</h1>
-          <button
+       
+          <Button
+            type="submit"
             onClick={() => deleteTask(index)}
             style={{
               backgroundColor: "red",
@@ -68,7 +75,7 @@ function Home() {
             }}
           >
             Delete
-          </button>
+          </Button>
         </div>
       ))}
     </div>
